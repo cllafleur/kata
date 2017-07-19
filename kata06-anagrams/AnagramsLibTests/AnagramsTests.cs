@@ -40,5 +40,18 @@
             Assert.That(result, Is.EqualTo(expectedResult));
         }
 
+        [Test]
+        public void TestBuildAnagramsCollection_ForAListOfAnagramWords_ReturnsTwoAnagramCollection()
+        {
+            var words = new List<string>(new[] { "word", "test",  "dwor", "sett","rodw", "tset", "ttes" });
+            IList<IList<string>> expectedResult = new List<IList<string>>(new[] {
+                new List<string>(new[] { "word", "dwor", "rodw" }),
+                new List<string>(new [] { "test", "sett", "tset", "ttes"})
+            });
+
+            var result = Anagrams.BuildAnagramsCollection(words);
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
     }
 }

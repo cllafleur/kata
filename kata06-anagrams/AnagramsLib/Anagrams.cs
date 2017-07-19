@@ -9,7 +9,25 @@ namespace AnagramsLib
     {
         public static IList<IList<string>> BuildAnagramsCollection(IList<string> sources)
         {
-            return null;
+            IList<IList<string>> wordGroupsByAnagram = new List<IList<string>>();
+            Dictionary<string, IList<string>> hashList = new Dictionary<string, IList<string>>();
+
+            foreach (string word in sources)
+            {
+                string hash = GetAnagramHash(word);
+                IList<string> anagrams;
+                if (!hashList.ContainsKey(hash))
+                {
+                    anagrams = new List<string>();
+                    hashList.Add(hash, anagrams);
+                    wordGroupsByAnagram.Add(anagrams);
+                }
+                else
+                    anagrams = hashList[hash];
+
+                anagrams.Add(word);
+            }
+            return wordGroupsByAnagram;
         }
 
         public static string GetAnagramHash(string word)
