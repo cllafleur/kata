@@ -20,13 +20,13 @@ class anagrams_grouped_tests(unittest.TestCase):
     def test_wordsWithOneAnagram_returnsOneAnagramGroup(self):
         words = ['test', 'sett', 'stet']
         expected_groups = [['test', 'sett', 'stet']]
-        result = anagrams.build_collection_groupedAnagrams(words)
+        result = anagrams.build_collection_grouped_anagrams(words)
         self.assertEqual(result, expected_groups)
 
     def test_wordsWithOneAnagram_returnsTwoAnagramGroup(self):
         words = ['test', 'main', 'sett', 'stet', 'ainm', 'niam']
         expected_groups = [['test', 'sett', 'stet'], ['main', 'ainm', 'niam']]
-        result = anagrams.build_collection_groupedAnagrams(words)
+        result = anagrams.build_collection_grouped_anagrams(words)
         self.assertEqual(result, expected_groups)
 
 if __name__ == '__main__':
